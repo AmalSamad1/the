@@ -6,6 +6,7 @@ import 'package:progress_dialog/progress_dialog.dart';
 
 import 'package:the/halaman/component/attend.dart';
 import 'package:the/halaman/component/header.dart';
+import 'package:the/list%20view.dart';
 
 import '../home/drawer.dart';
 import 'component/your_location.dart';
@@ -102,7 +103,7 @@ class _MyappState extends State<Halamanone>{
         padding: const EdgeInsets.all(16),
         itemBuilder: (context, i) {
           return Container(
-            height: 130,
+            height: 160,
             child: Card(
 //                color: Colors.blue,
               elevation: 10,
@@ -114,55 +115,69 @@ class _MyappState extends State<Halamanone>{
                       onTap: () {
 
                       },
-                      child: Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            image: DecorationImage(
-                                image: AssetImage('images/asd.png'),
-                                fit: BoxFit.cover),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(75.0)),
-                            boxShadow: [
 
-                              BoxShadow(blurRadius: 7.0, color: Colors.black)
-                            ]),
+                      child: Container(
+                        width: 500.0,
+                        height: 400.0,
+
+                            padding: EdgeInsets.only(top: 0, left: 0, right: 0),
+                            child: Column(
+                              children: <Widget>[
+                                TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'Customer name',
+                                      labelStyle: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey),
+                                      // hintText: 'EMAIL',
+                                      // hintStyle: ,
+                                      focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.green))),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    showDialog<void>(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext conext) {
+                                        return AlertDialog(
+                                          title: Text('Not in'),
+                                          content:
+                                          const Text('This item is no longer available',
+                                          ),
+                                          actions: <Widget>[
+                                            FlatButton(
+                                              child: Text('Ok'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                      padding: EdgeInsets.all(50.0),
+                                      child: Chip(
+                                        label: Text('@anonymous'),
+                                        shadowColor: Colors.blue[50],
+                                        backgroundColor: Colors.white70,
+                                        elevation: 10,
+                                        autofocus: true,
+                                      )),
+                                ),
+
+                              ],),
+
+
                       ),
                     ),
+
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      showDialog<void>(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (BuildContext conext) {
-                          return AlertDialog(
-                            title: Text('Not in stock'),
-                            content:
-                            const Text('This item is no longer available'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text('Ok'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(30.0),
-                        child: Chip(
-                          label: Text('@anonymous'),
-                          shadowColor: Colors.blue[50],
-                          backgroundColor: Colors.white70,
-                          elevation: 10,
-                          autofocus: true,
-                        )),
-                  ),
+
                 ],
               ),
             ),
@@ -174,8 +189,8 @@ class _MyappState extends State<Halamanone>{
         foregroundColor: Colors.black,
 
         onPressed: () {
-          // Navigator.of(context).push(
-          //     MaterialPageRoute(builder: (context) => prof()));
+           Navigator.of(context).push(
+               MaterialPageRoute(builder: (context) => Userdetials()));
         },
 
         child:

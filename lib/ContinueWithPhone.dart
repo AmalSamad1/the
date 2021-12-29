@@ -10,7 +10,7 @@ class ContinueWithPhone extends StatefulWidget {
 
 class _ContinueWithPhoneState extends State<ContinueWithPhone> {
 
-  String phoneNumber = "_phonenumber";
+  String phoneNumber = "";
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class _ContinueWithPhoneState extends State<ContinueWithPhone> {
           size: 30,
           color: Colors.black,
         ),
+
         title: Text(
           "Continue with phone",
           style: TextStyle(
